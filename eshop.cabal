@@ -1,0 +1,37 @@
+cabal-version:      2.4
+name:               eshop
+version:            0.1.0.0
+
+author:             Ingars Jekabsons
+maintainer:         Ingars.Jekabsons@tietoevry.com
+extra-source-files: CHANGELOG.md
+
+common common-options
+    build-depends: base ^>=4.14.3.0
+                    , mtl
+                    , aeson
+                    , deriving-aeson
+                    , servant
+                    , servant-server
+                    , persistent
+                    , persistent-sqlite
+                    , esqueleto
+                    , wai
+                    , wai-cors
+                    , warp
+                    , monad-logger
+                    , http-client
+
+
+executable eshop
+    import: common-options
+    build-depends: eshop
+    main-is:          Main.hs
+
+    hs-source-dirs:   app
+    default-language: Haskell2010
+
+library
+    import: common-options
+    hs-source-dirs: src
+    exposed-modules: DB, API, Integration
