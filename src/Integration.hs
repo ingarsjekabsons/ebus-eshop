@@ -17,10 +17,11 @@ import Network.HTTP.Client
     parseRequest,
     withResponse,
   )
+import Network.HTTP.Client.TLS (newTlsManager)
 
 fetchWHDB :: String -> IO [WhProduct]
 fetchWHDB url = do
-  manager <- newManager defaultManagerSettings
+  manager <- newTlsManager
   req <- parseRequest url
   withResponse
     req
@@ -35,7 +36,7 @@ fetchWHDB url = do
 
 fetchWHProd :: String -> IO (Maybe WhProduct)
 fetchWHProd url = do
-  manager <- newManager defaultManagerSettings
+  manager <- newTlsManager
   req <- parseRequest url
   withResponse
     req

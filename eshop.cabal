@@ -21,6 +21,7 @@ common common-options
                     , warp
                     , monad-logger
                     , http-client
+                    , http-client-tls
 
 
 executable eshop
